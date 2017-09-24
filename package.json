@@ -1,0 +1,24 @@
+{
+  "name": "elm-boilerplate",
+  "version": "1.0.0",
+  "description": "A simple Makefile able to create elm app",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillaumearm/elm-boilerplate.git"
+  },
+  "keywords": [
+    "elm",
+    "create-app"
+  ],
+  "bin": {
+    "elm-create": "./elm-create.sh"
+  },
+  "author": "Guillaume ARM",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/guillaumearm/elm-boilerplate/issues"
+  },
+  "homepage": "https://github.com/guillaumearm/elm-boilerplate#readme",
+  "preferGlobal": true
+}
