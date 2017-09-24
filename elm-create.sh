@@ -1,6 +1,16 @@
 #!/usr/bin/env sh
 
-ELM_BOILERPLATE_DIR=~/elm-boilerplate
+abs(){
+    if [[ -d "$1" ]]; then
+        cd "$1"
+        echo "$(pwd -P)"
+    else
+        cd "$(dirname "$1")"
+        echo "$(pwd -P)/$(basename "$1")"
+    fi
+}
+
+ELM_BOILERPLATE_DIR=$(abs $(dirname $(abs $0))/../lib/node_modules/elm-boilerplate)
 
 function error() {
   >&2 echo $*
