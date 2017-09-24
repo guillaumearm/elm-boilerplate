@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+
+ls -l /bin/bash && /bin/bash --version
+
 npm install -g .
 
 mkdir test-app && cd test-app || exit 1
