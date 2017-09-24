@@ -1,8 +1,10 @@
 {
   "name": "elm-boilerplate",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple Makefile able to create Elm app",
-  "scripts": {},
+  "scripts": {
+    "test": "./test.sh"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/guillaumearm/elm-boilerplate.git"
@@ -11,9 +13,6 @@
     "elm",
     "create-app"
   ],
-  "scripts": {
-    "test": "./test.sh"
-  },
   "bin": {
     "elm-create": "./elm-create.sh"
   },
