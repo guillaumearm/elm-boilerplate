@@ -1,4 +1,4 @@
-.PHONY: re all build test clean clean-stuff dev
+.PHONY: re all build test clean clean-stuff dev help
 ### ENVIRONMENT VARIABLES ###
 
 # BASIC
@@ -86,6 +86,20 @@ define STYLES_CSS_CONTENT
 endef
 export STYLES_CSS_CONTENT
 
+# help
+define HELP_CONTENT
+Usage:
+  make dev : start elm live on port 8000
+  PORT=1337 make dev : start elm live on port 1337
+  make test : start tests
+  make clean : remove artifacts
+  make build : build artifacts
+  make re : recompile artifacts
+  make help : display this help
+
+endef
+export HELP_CONTENT
+
 ### BASIC COMMANDS
 
 all: $(ELM_PACKAGE) $(TESTS_FOLDER) \
@@ -129,6 +143,9 @@ test: all
 	$(ELMTEST)
 
 re: clean all
+
+help:
+	@$(ECHO) "$$HELP_CONTENT"
 
 ### INIT PROJECT ###
 LOG=$(ECHO) create
