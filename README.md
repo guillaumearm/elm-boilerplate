@@ -6,7 +6,7 @@ elm-boilerplate
 Make sure you have `elm`, `elm-live`, `elm-test` and `elm-css` installed :
 
 ```bash
-2> /dev/null npm list --global --depth=0 | grep elm
+$ 2> /dev/null npm list --global --depth=0 | grep elm
 ```
 
 or install them :
