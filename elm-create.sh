@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 abs(){
-    if [[ -d "$1" ]]; then
+    if [ -d "$1" ]; then
         cd "$1"
         echo "$(pwd -P)"
     else
