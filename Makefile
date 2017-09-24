@@ -1,4 +1,4 @@
-.PHONY: re all test clean dev
+.PHONY: re all build test clean clean-stuff dev
 ### ENVIRONMENT VARIABLES ###
 
 # BASIC
@@ -8,8 +8,15 @@ ELM_PACKAGE=elm-package.json
 MAIN=Main.elm
 BUNDLE=elm.js
 
+# CACHE
+ELM_STUFF_ARTIFACTS=$(ELM_STUFF)/build-artifacts
+TESTS_ELM_STUFF_ARTIFACTS=$(TESTS_FOLDER)/$(ELM_STUFF_ARTIFACTS)
+
 # INSTALL
 ELMINSTALL=elm package install -y
+
+# BUILD
+ELMMAKE=elm make
 
 # DEV
 ELMLIVE=elm live --open --pushstate
@@ -76,7 +83,10 @@ export STYLES_CSS_CONTENT
 
 ### BASIC COMMANDS
 
-all: $(ELM_PACKAGE) $(GITIGNORE) $(MAIN) $(INDEX_HTML) $(STYLES_CSS)
+all: $(ELM_PACKAGE) $(TESTS_FOLDER) \
+	$(GITIGNORE) $(MAIN) $(INDEX_HTML) $(STYLES_CSS) \
+	$(TESTS_ELM_STUFF) $(ELM_STUFF) \
+	$(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS)
 
 dev: all
 	$(ELMLIVE) $(MAIN) --output=$(BUNDLE)
@@ -85,12 +95,25 @@ dev: all
 $(ELM_PACKAGE) $(ELM_STUFF):
 	$(ELMINSTALL)
 
+# build
+$(ELM_STUFF_ARTIFACTS):
+	@$(ELMMAKE)
+
+$(TESTS_ELM_STUFF_ARTIFACTS):
+	@$(CD) $(TESTS_FOLDER) && $(ELMMAKE)
+
 # tests
+$(TESTS_FOLDER):
+	$(ELMTEST) init
+
 $(TESTS_ELM_STUFF):
 	@$(CD) $(TESTS_FOLDER) && $(ELMINSTALL)
 
 clean:
-	@$(RIMRAF) $(ELM_STUFF) $(TESTS_ELM_STUFF) $(BUNDLE)
+	@$(RIMRAF) $(BUNDLE) $(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS) && $(ECHO) Cleaned!
+
+clean-stuff:
+	@$(RIMRAF) $(ELM_STUFF) $(TESTS_ELM_STUFF)
 
 test: all
 	$(ELMTEST)
