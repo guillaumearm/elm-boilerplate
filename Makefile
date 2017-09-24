@@ -19,7 +19,8 @@ ELMINSTALL=elm package install -y
 ELMMAKE=elm make
 
 # DEV
-ELMLIVE=elm live --open --pushstate
+PORT?=8000
+ELMLIVE=elm live --open --pushstate --port=$(PORT)
 
 # TESTS
 TESTS_FOLDER=tests
