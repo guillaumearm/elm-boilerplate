@@ -3,19 +3,22 @@ elm-boilerplate
 
 
 ### Installation
-In your .bashrc or .zshrc or whatever, make sure you have :
+Make sure you have `elm`, `elm-live`, `elm-test` and `elm-css` installed :
+
 ```bash
-export PATH=$PATH:~/bin
+2> /dev/null npm list --global --depth=0 | grep elm
 ```
 
-then in a terminal :
+or install them :
+
 ```bash
-$ cd ~
-$ mkdir -p bin
-$ git clone https://github.com/guillaumearm/elm-boilerplate.git
-$ ln -s ~/elm-boilerplate/elm-create.sh ./bin/elm-create
+$ npm install --global elm elm-live elm-test elm-css
 ```
 
+and simply install elm-boilerplate :
+```bash
+$ npm install --global elm-boilerplate
+```
 
 ### Create app
 ```bash
