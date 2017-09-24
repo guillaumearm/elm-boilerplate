@@ -11,6 +11,9 @@
     "elm",
     "create-app"
   ],
+  "scripts": {
+    "test": "./test.sh"
+  },
   "bin": {
     "elm-create": "./elm-create.sh"
   },
