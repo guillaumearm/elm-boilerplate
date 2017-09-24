@@ -1,4 +1,4 @@
-.PHONY: re all build test clean clean-stuff dev help
+.PHONY: re all build test test-watch clean clean-stuff dev help
 ### ENVIRONMENT VARIABLES ###
 
 # BASIC
@@ -93,6 +93,7 @@ Usage:
   make dev : start elm live on port 8000
   make dev PORT=1337 : start elm live on port 1337
   make test : start tests
+  make test-watch : start tests in watch mode
   make clean : remove artifacts
   make build : build artifacts
   make re : recompile artifacts
@@ -143,6 +144,9 @@ clean-stuff:
 
 test: all
 	$(ELMTEST)
+
+test-watch: all
+	$(ELMTEST) --watch
 
 re: clean all
 
