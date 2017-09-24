@@ -1,6 +1,6 @@
 {
   "name": "elm-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Makefile able to create elm app",
   "scripts": {},
   "repository": {
