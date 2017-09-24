@@ -51,7 +51,9 @@ module Main exposing (..)
 import Html exposing (..)
 
 
-main = text "$(APP_TITLE)"
+main =
+  h1 [] [ text "$(APP_TITLE)" ]
+
 endef
 export MAIN_CONTENT
 
