@@ -21,7 +21,7 @@ function error() {
 
 [ "$(/usr/bin/env ls -A)" != "" ] && error Error: current folder should be empty
 
-ln -s $ELM_BOILERPLATE_DIR/Makefile . || error Error: Makefile not found
+cp $ELM_BOILERPLATE_DIR/Makefile . || error Error: Makefile not found
 
 echo Creating app : $*
 APP_TITLE="$*" make

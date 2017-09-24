@@ -39,7 +39,6 @@ GIT_FOLDER=.git
 GITIGNORE=.gitignore
 
 define GITIGNORE_CONTENT
-Makefile
 $(ELM_STUFF)
 $(BUNDLE)
 endef
