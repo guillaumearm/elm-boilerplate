@@ -28,5 +28,5 @@ $ make help
 ### Start dev server
 ```bash
 make dev # start dev server on port 8000
-PORT=1337 make dev # start dev server on port 1337
+make dev PORT=1337 # start dev server on port 1337
 ```
