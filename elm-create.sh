@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-ELM_BOILERPLATE_DIR=~/trap/elm/boilerplate
+ELM_BOILERPLATE_DIR=~/elm-boilerplate
 
 function error() {
   >&2 echo $*
