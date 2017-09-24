@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 abs(){
-    if [[ -d "$1" ]]; then
+    if [ -d "$1" ]; then
         cd "$1"
         echo "$(pwd -P)"
     else
@@ -12,7 +12,7 @@ abs(){
 
 ELM_BOILERPLATE_DIR=$(abs $(dirname $(abs $0))/../lib/node_modules/elm-boilerplate)
 
-function error() {
+error() {
   >&2 echo $*
   exit 1
 }
