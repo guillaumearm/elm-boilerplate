@@ -2,6 +2,8 @@ elm-boilerplate
 ================
 [![Build Status](https://travis-ci.org/guillaumearm/elm-boilerplate.svg?branch=master)](https://travis-ci.org/guillaumearm/elm-boilerplate)
 
+A simple Makefile able to create Elm app.
+
 ### Installation
 Make sure you have `elm`, `elm-live`, `elm-test` and `elm-css` installed :
 
