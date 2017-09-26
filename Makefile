@@ -92,10 +92,8 @@ export STYLES_CSS_CONTENT
 # help
 define HELP_CONTENT
 Usage:
-  make dev : start elm live on port 8000
-  make dev PORT=1337 : start elm live on port 1337
-  make debug : start elm reactor on port 8000
-  make debug PORT=1337 : start elm reactor on port 1337
+  make dev : start elm live (you can use PORT environment variable)
+  make debug : start elm reactor (you can use PORT environment variable)
   make test : start tests
   make test-watch : start tests in watch mode
   make clean : remove artifacts
