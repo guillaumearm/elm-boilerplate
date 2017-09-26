@@ -1,4 +1,4 @@
-.PHONY: re all build test test-watch clean clean-stuff dev debug help
+.PHONY: re all install build test test-watch clean clean-stuff dev debug help
 ### ENVIRONMENT VARIABLES ###
 
 # BASIC
@@ -107,6 +107,8 @@ export HELP_CONTENT
 ### BASIC COMMANDS
 
 # install
+all: install
+
 $(ELM_PACKAGE) $(ELM_STUFF):
 	$(ELMINSTALL)
 
@@ -129,7 +131,7 @@ $(GIT_FOLDER):
 	$(GIT) init && $(GIT) add . && $(GIT) commit -m $(GIT_INITIAL_MESSAGE)
 
 
-all: $(GITIGNORE) \
+install: $(GITIGNORE) \
 	$(ELM_PACKAGE) $(TESTS_FOLDER) \
 	$(MAIN) $(INDEX_HTML) $(STYLES_CSS) \
 	$(TESTS_ELM_STUFF) $(ELM_STUFF) \

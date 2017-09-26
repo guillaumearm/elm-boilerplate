@@ -24,4 +24,4 @@ error() {
 cp $ELM_BOILERPLATE_DIR/Makefile . || error Error: Makefile not found
 
 echo Creating app : $*
-APP_TITLE="$*" make
+APP_TITLE="$*" make install
