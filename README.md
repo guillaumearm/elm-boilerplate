@@ -36,3 +36,9 @@ $ make help
 make dev # start dev server on port 8000
 make dev PORT=1337 # start dev server on port 1337
 ```
+
+### Start debug server
+```bash
+make debug # start debug server on port 8000
+make debug PORT=1337 # start debug server on port 1337
+```

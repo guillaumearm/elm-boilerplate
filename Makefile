@@ -1,4 +1,4 @@
-.PHONY: re all build test test-watch clean clean-stuff dev help
+.PHONY: re all build test test-watch clean clean-stuff dev debug help
 ### ENVIRONMENT VARIABLES ###
 
 # BASIC
@@ -21,6 +21,7 @@ ELMMAKE=elm make
 # DEV
 PORT?=8000
 ELMLIVE=elm live --open --pushstate --port=$(PORT)
+ELMREACTOR=elm reactor --port=$(PORT) --address=0.0.0.0
 
 # TESTS
 TESTS_FOLDER=tests
@@ -93,6 +94,8 @@ define HELP_CONTENT
 Usage:
   make dev : start elm live on port 8000
   make dev PORT=1337 : start elm live on port 1337
+  make debug : start elm reactor on port 8000
+  make debug PORT=1337 : start elm reactor on port 1337
   make test : start tests
   make test-watch : start tests in watch mode
   make clean : remove artifacts
@@ -136,7 +139,10 @@ all: $(GITIGNORE) \
 	$(GIT_FOLDER)
 
 dev: all
-	$(ELMLIVE) $(MAIN) --output=$(BUNDLE)
+	@$(ELMLIVE) $(MAIN) --output=$(BUNDLE)
+
+debug: all
+	@$(ELMREACTOR)
 
 clean:
 	@$(RIMRAF) $(BUNDLE) $(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS) && $(ECHO) Cleaned!
