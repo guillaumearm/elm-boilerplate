@@ -11,7 +11,9 @@
   },
   "keywords": [
     "elm",
-    "create-app"
+    "create-app",
+    "makefile",
+    "livereload"
   ],
   "bin": {
     "elm-create": "./elm-create.sh"
