@@ -1,4 +1,4 @@
-.PHONY: re all build test test-watch clean clean-stuff dev help
+.PHONY: re all install build test test-watch clean clean-stuff dev debug help
 ### ENVIRONMENT VARIABLES ###
 
 # BASIC
@@ -21,6 +21,7 @@ ELMMAKE=elm make
 # DEV
 PORT?=8000
 ELMLIVE=elm live --open --pushstate --port=$(PORT)
+ELMREACTOR=elm reactor --port=$(PORT) --address=0.0.0.0
 
 # TESTS
 TESTS_FOLDER=tests
@@ -91,8 +92,8 @@ export STYLES_CSS_CONTENT
 # help
 define HELP_CONTENT
 Usage:
-  make dev : start elm live on port 8000
-  make dev PORT=1337 : start elm live on port 1337
+  make dev : start elm live (you can use PORT environment variable)
+  make debug : start elm reactor (you can use PORT environment variable)
   make test : start tests
   make test-watch : start tests in watch mode
   make clean : remove artifacts
@@ -105,17 +106,9 @@ export HELP_CONTENT
 
 ### BASIC COMMANDS
 
-all: $(GITIGNORE) \
-	$(ELM_PACKAGE) $(TESTS_FOLDER) \
-	$(MAIN) $(INDEX_HTML) $(STYLES_CSS) \
-	$(TESTS_ELM_STUFF) $(ELM_STUFF) \
-	$(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS) \
-	$(GIT_FOLDER)
-
-dev: all
-	$(ELMLIVE) $(MAIN) --output=$(BUNDLE)
-
 # install
+all: install
+
 $(ELM_PACKAGE) $(ELM_STUFF):
 	$(ELMINSTALL)
 
@@ -136,6 +129,20 @@ $(TESTS_ELM_STUFF):
 # git
 $(GIT_FOLDER):
 	$(GIT) init && $(GIT) add . && $(GIT) commit -m $(GIT_INITIAL_MESSAGE)
+
+
+install: $(GITIGNORE) \
+	$(ELM_PACKAGE) $(TESTS_FOLDER) \
+	$(MAIN) $(INDEX_HTML) $(STYLES_CSS) \
+	$(TESTS_ELM_STUFF) $(ELM_STUFF) \
+	$(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS) \
+	$(GIT_FOLDER)
+
+dev: all
+	@$(ELMLIVE) $(MAIN) --output=$(BUNDLE)
+
+debug: all
+	@$(ELMREACTOR)
 
 clean:
 	@$(RIMRAF) $(BUNDLE) $(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS) && $(ECHO) Cleaned!
