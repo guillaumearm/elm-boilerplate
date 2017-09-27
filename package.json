@@ -1,6 +1,6 @@
 {
   "name": "elm-boilerplate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple Makefile able to create a new Elm app",
   "scripts": {
     "test": "./test.sh",
