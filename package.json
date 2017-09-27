@@ -4,7 +4,8 @@
   "description": "A simple Makefile able to create a new Elm app",
   "scripts": {
     "test": "./test.sh",
-    "preversion": "./test.sh"
+    "preversion": "./test.sh",
+    "postpublish": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
