@@ -144,6 +144,8 @@ dev: all
 debug: all
 	@$(ELMREACTOR)
 
+build: $(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS)
+
 clean:
 	@$(RIMRAF) $(BUNDLE) $(ELM_STUFF_ARTIFACTS) $(TESTS_ELM_STUFF_ARTIFACTS) && $(ECHO) Cleaned!
 
