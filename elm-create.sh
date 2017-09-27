@@ -2,15 +2,16 @@
 
 abs(){
     if [ -d "$1" ]; then
-        cd "$1"
+        cd "$1" 2> /dev/null
         echo "$(pwd -P)"
     else
-        cd "$(dirname "$1")"
+        cd "$(dirname "$1")" 2> /dev/null
         echo "$(pwd -P)/$(basename "$1")"
     fi
 }
 
-ELM_BOILERPLATE_DIR=$(abs $(dirname $(abs $0))/../lib/node_modules/elm-boilerplate)
+ELM_DEFAULT_BOILERPLATE_DIR=$(abs $(dirname $(abs $0))/../lib/node_modules/elm-boilerplate)
+: ${ELM_BOILERPLATE_DIR:=$ELM_DEFAULT_BOILERPLATE_DIR}
 
 error() {
   >&2 echo $*
