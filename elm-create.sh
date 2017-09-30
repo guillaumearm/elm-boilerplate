@@ -21,7 +21,7 @@ error() {
 ELM_VERSION=$(elm --version)
 VERSION=$($ELM_BOILERPLATE_DIR/print-version.js)
 
-USAGE=$(cat << --
+USAGE=`cat << --
 elm-create $VERSION (Elm Platform $ELM_VERSION)\n
 \n
 Usage: elm-create <name-of-your-project>\n
@@ -32,7 +32,7 @@ Available options:\n
 
 Examples:\n
   \telm-create "Hello World"\n
---)
+--`
 
 [ "$1" == "--help" -o "$1" == "-h" ] && echo $USAGE && exit 0
 [ "$1" == "--version" -o "$1" == "-v" ] && echo v$VERSION && exit 0
