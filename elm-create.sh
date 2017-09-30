@@ -18,7 +18,11 @@ error() {
   exit 1
 }
 
-[ "$*" == "" ] && error Usage: elm create "Your app name" && exit 1
+USAGE='Usage: elm create "Your app name"'
+
+[ "$1" == "--help" -o "$1" == "-h" ] && echo $USAGE && exit 0
+
+[ "$*" == "" ] && error $USAGE
 
 [ "$(/usr/bin/env ls -A)" != "" ] && error Error: current folder should be empty
 
