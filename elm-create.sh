@@ -18,7 +18,29 @@ error() {
   exit 1
 }
 
-[ "$*" == "" ] && error Usage: elm create "Your app name" && exit 1
+ELM_VERSION=$(elm --version)
+VERSION=$($ELM_BOILERPLATE_DIR/print-version.js)
+
+USAGE=`cat << --
+elm-create $VERSION (Elm Platform $ELM_VERSION)\n
+\n
+Usage: elm-create <name-of-your-project>\n
+\n
+Available options:\n
+  \t-h, --help      \tShow this help text\n
+  \t-v, --version   \tShow version of elm-create\n
+
+Examples:\n
+  \telm-create "Hello World"\n
+--`
+
+[ "$1" == "--help" -o "$1" == "-h" ] && echo $USAGE && exit 0
+[ "$1" == "--version" -o "$1" == "-v" ] && echo v$VERSION && exit 0
+
+first_letter="$(echo $1 | head -c 1)"
+[ "$first_letter" == "-" ] && error Bad option: $1
+
+[ "$*" == "" ] && error $USAGE
 
 [ "$(/usr/bin/env ls -A)" != "" ] && error Error: current folder should be empty
 
